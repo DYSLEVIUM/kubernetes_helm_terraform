@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: user-deployment
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: user
+    template:
+        metadata:
+            labels:
+                app: user
+            annotations:
+                prometheus.io/scrape: 'true'
+                prometheus.io/path: /metrics
+                # prometheus.io/port: '8080'
+                prometheus.io/port: '9100'
+        spec:
+            containers:
+                - image: pushpakant/user
+                  name: user
+                  ports:
+                      - containerPort: 4000
