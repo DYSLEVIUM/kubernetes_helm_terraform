@@ -158,6 +158,10 @@ helm list
 ```
 
 ```
+helm template [resource-name] -f [values.yaml location] [charts location]
+```
+
+```
 kubectl get pods
 ```
 
